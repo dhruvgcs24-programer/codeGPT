@@ -1,0 +1,129 @@
+/* home.css - Unified VoiceCare Glassmorphism Theme */
+
+/* Imported VoiceCare variables for consistency */
+:root {
+  --bg-deep: #0f172a;
+  --glass-surface: rgba(30, 41, 59, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --primary: #3b82f6;
+  --accent: #06b6d4;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --radius: 16px;
+  --font-main: 'Inter', sans-serif;
+}
+
+* { box-sizing: border-box; outline: none; }
+
+body {
+  margin: 0;
+  font-family: var(--font-main);
+  /* Use the dark gradient background */
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  color: var(--text-main);
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Background Animation from voicecare.css */
+.bg-orb {
+    position: fixed; border-radius: 50%; filter: blur(100px); z-index: -1; opacity: 0.4;
+    animation: float 20s infinite ease-in-out;
+}
+.orb-1 { width: 400px; height: 400px; background: var(--primary); top: -100px; left: -100px; }
+.orb-2 { width: 500px; height: 500px; background: var(--accent); bottom: -100px; right: -100px; animation-delay: -10s; }
+@keyframes float { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(30px, 50px); } }
+
+/* Header Styling (Consistent with triage.css/voicecare.css logos) */
+header {
+    background: transparent;
+    padding: 60px 20px 30px;
+    text-align: center;
+    margin-bottom: -15px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 3rem;
+    font-weight: 800;
+    /* Apply voicecare's gradient text effect */
+    background: linear-gradient(to right, var(--text-main), var(--accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 1px;
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    padding: 20px 20px 60px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero h2 {
+    font-size: 2.5rem;
+    margin: 15px 0;
+    color: var(--primary);
+}
+
+.hero p {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+}
+
+/* Features Grid */
+.features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 20px 40px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* Glass Card Styling (Matching voicecare.css) */
+.glass-card {
+    /* Use the glass-card style for feature-card */
+    background: var(--glass-surface);
+    backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius);
+    padding: 30px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: all 0.25s;
+    text-align: center;
+}
+
+.glass-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+}
+
+.glass-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: var(--text-main);
+}
+
+.glass-card p {
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+/* Footer (Matching VoiceCare feel) */
+footer {
+    text-align: center;
+    padding: 40px;
+    margin-top: 60px;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    opacity: 0.6;
+}
+
+@media (max-width: 768px) {
+    header h1 { font-size: 2rem; }
+    .hero h2 { font-size: 1.8rem; }
+    .features { padding: 20px; }
+}

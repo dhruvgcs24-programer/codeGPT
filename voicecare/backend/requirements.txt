@@ -1,0 +1,7 @@
+# backend/requirements.txt
+pandas
+scikit-learn
+joblib
+flask
+flask-cors
+pyspellchecker

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VoiceCare Triage Dashboard</title>
+    <link rel="stylesheet" href="triage.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header>
+    <h1>MediNex Triage Dashboard</h1>
+    <button id="voiceBtn">🎙 Start Voice Triage</button>
+</header>
+
+<div class="container">
+    <section class="dashboard">
+
+        <div class="summary-section">
+            <h2>Quick Overview | Active Risk Counts</h2>
+            <div id="summaryGrid">
+                <div class="card low">
+                    <h3>Low Risk</h3>
+                    <p id="countLow">0</p>
+                </div>
+                <div class="card medium">
+                    <h3>Medium Risk</h3>
+                    <p id="countMed">0</p>
+                </div>
+                <div class="card high">
+                    <h3>High Risk</h3>
+                    <p id="countHigh">0</p>
+                </div>
+                <div class="card emergency">
+                    <h3>Emergency</h3>
+                    <p id="countEmer">0</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="table-section">
+            <h2>Live Triage Feed</h2>
+            <div class="table-scroll-wrapper">
+                <table id="triageTable">
+                    <thead>
+                        <tr>
+                            <th>Time</th>
+                            <th>Patient Utterance</th>
+                            <th>Prediction</th>
+                            <th>Risk Level</th>
+                            </tr>
+                    </thead>
+                    <tbody>
+                        </tbody>
+                </table>
+            </div>
+        </div>
+
+    </section>
+</div>
+
+<script src="triage.js"></script>
+
+</body>
+</html>

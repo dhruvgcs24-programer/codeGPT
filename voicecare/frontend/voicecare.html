@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>VoiceCare AI - Prototype</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <link rel="stylesheet" href="voicecare.css" />
+</head>
+<body>
+  
+  <div class="bg-orb orb-1"></div>
+  <div class="bg-orb orb-2"></div>
+
+  <div id="toast" class="toast hidden"></div>
+
+  <header>
+    <div class="logo">
+      <i class="fa-solid fa-heart-pulse"></i> VoiceCare<span>.ai</span>
+    </div>
+    <p>Conversational Health Assistant</p>
+  </header>
+
+  <main class="container">
+    
+    <section class="glass-card main-interface">
+      <div class="card-header">
+        <h2><i class="fa-solid fa-microphone-lines"></i> Intake</h2>
+        <span class="status-badge" id="statusBadge">Ready</span>
+      </div>
+
+      <div class="controls">
+        <div class="input-wrapper">
+          <textarea id="textInput" placeholder="Tap 'Start Listening' and say something like: 'My blood pressure is 140 over 90 and I have a headache.'"></textarea>
+        </div>
+        
+        <div class="action-row">
+          <button id="startBtn" class="btn mic-btn">
+            <i id="micIcon" class="fa-solid fa-microphone"></i> <span id="micText">Start Listening</span>
+          </button>
+          <button id="analyzeBtn" class="btn primary-btn">
+            <i class="fa-solid fa-stethoscope"></i> Analyze Input
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="glass-card report-card">
+      <div class="card-header">
+        <h2><i class="fa-solid fa-clipboard-medical"></i> Assessment</h2>
+        <button id="stopSpeakBtn" class="mini-btn" style="display:none" title="Silence Voice">
+           <i class="fa-solid fa-volume-xmark"></i> Stop Audio
+        </button>
+      </div>
+      <div id="reportArea" class="report-content">
+        <div class="empty-state">
+          <i class="fa-solid fa-wave-square"></i>
+          <p>Awaiting patient data...</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="grid-row">
+      <section class="glass-card log-card">
+        <div class="card-header compact">
+          <h3><i class="fa-solid fa-history"></i> Session History</h3>
+          <div class="mini-actions">
+            <button id="downloadLog" title="Download JSON"><i class="fa-solid fa-download"></i> Save</button>
+            <button id="clearLog" title="Clear History"><i class="fa-solid fa-trash"></i> Clear</button>
+          </div>
+        </div>
+        <div id="logArea" class="log-list"></div>
+      </section>
+
+      <section class="glass-card disclaimer-card">
+        <i class="fa-solid fa-triangle-exclamation"></i>
+        <p><strong>Prototype Only:</strong> Not a medical device. In emergencies (chest pain, severe bleeding), call 911 immediately.</p>
+      </section>
+    </div>
+
+  </main>
+
+  <footer>
+    <p>© 2025 VoiceCare AI • Problem Statement 1 Solution</p>
+  </footer>
+
+  <script src="voicecare.js"></script>
+</body>
+</html>

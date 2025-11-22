@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Analytics Dashboard</title>
+    <link rel="stylesheet" href="analytics.css">
+</head>
+<body>
+
+<!-- AUTH CHECK -->
+<script>
+fetch("http://127.0.0.1:5000/auth_check")
+    .then(r => r.json())
+    .then(d => {
+        if (d.status !== "ok") {
+            window.location.href = "login.html";
+        }
+    });
+</script>
+
+<header>
+    <h1>Analytics Dashboard</h1>
+    <button id="logoutBtn">Logout</button>
+</header>
+
+<section id="graphs">
+    <canvas id="riskChart" width="600" height="300"></canvas>
+    <canvas id="conditionChart" width="600" height="300"></canvas>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="analytics.js"></script>
+
+</body>
+</html>

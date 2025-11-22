@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>VoiceCare - Medication Reminder</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="remainder.css" />
+</head>
+<body>
+  <div class="app-container">
+    <header class="app-header">
+      <div class="logo">
+        <span class="logo-icon">💊</span>
+        <span class="logo-text">VoiceCare</span>
+      </div>
+      <p class="tagline">Smart voice-based medication reminders for patients.</p>
+    </header>
+
+    <section class="settings-card">
+      <h2>🩺 Medication Reminder Setup</h2>
+
+      <div class="field">
+        <label for="timeInput">Daily Reminder Time</label>
+        <input id="timeInput" type="time" />
+        <small>All listed medications will be reminded at this time every day.</small>
+      </div>
+      
+      <h3>📝 Medications List (<span id="medCount">0</span>)</h3>
+      <div id="medicationsList" class="medication-list-container">
+          </div>
+      
+      <div class="medication-adder">
+          <input id="newMedName" type="text" placeholder="e.g. Metformin 500mg, Insulin" class="med-input-field" />
+          <button id="addMedBtn" class="add-med-btn">Add Medicine</button>
+      </div>
+      
+      <button id="addMedVoiceBtn" class="secondary-btn" style="margin-top: 15px; width: 100%;">
+          🗣️ Add Medicine by Voice
+      </button>
+      
+    </section>
+
+    <section class="controls">
+      <button id="startReminder" class="primary-btn">
+        ▶ Start Medication Reminder
+      </button>
+
+      <button id="listen" class="secondary-btn">
+        🎤 Patient Response (Confirm/Repeat)
+      </button>
+    </section>
+
+    <section class="status-section">
+      <h3>Status</h3>
+      <p id="statusText">
+        System idle. Configure your reminder to get started.
+      </p>
+    </section>
+
+    <section class="log-section">
+      <h3>Activity Log</h3>
+      <div id="log" class="log-box"></div>
+    </section>
+
+    <footer class="app-footer">
+      <small>
+        VoiceCare &mdash; Demo project: voice-based medication reminder with
+        speech recognition.
+      </small>
+    </footer>
+  </div>
+
+  <script src="remainder.js"></script>
+</body>
+</html>

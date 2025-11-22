@@ -1,0 +1,348 @@
+/* Global Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* 1. Body: Deep Space Background with subtle animation */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  /* Deep, vibrant dark background */
+  background: #060b1c; 
+  color: #e0f7fa; /* Light cyan text for contrast */
+  min-height: 100vh;
+  background-attachment: fixed;
+  background-image: radial-gradient(circle at top right, rgba(16, 35, 66, 0.4) 1%, transparent 35%),
+                    radial-gradient(circle at bottom left, rgba(1, 10, 30, 0.4) 1%, transparent 35%);
+}
+
+/* 2. App Layout */
+.app-container {
+  max-width: 900px;
+  margin: 2.5rem auto 3rem;
+  padding: 1.5rem;
+  /* Add a gentle shadow to lift the whole app */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  border-radius: 20px;
+}
+
+/* Header */
+.app-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 2rem;
+  font-weight: 700;
+  /* Neon title glow */
+  color: #00f5ff; 
+  text-shadow: 0 0 10px rgba(0, 245, 255, 0.6), 0 0 20px rgba(0, 245, 255, 0.3);
+}
+
+.logo-icon {
+  font-size: 2.5rem;
+  transform: rotate(-10deg);
+}
+
+.tagline {
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  opacity: 0.8;
+}
+
+/* 3. Glassmorphism Card Style */
+.settings-card, .status-section, .log-section {
+  max-width: 700px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  border-radius: 20px;
+  /* Core Glassmorphism properties */
+  background: rgba(18, 48, 77, 0.15); 
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 198, 255, 0.2); /* Subtle cyan border */
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.settings-card:hover {
+    box-shadow: 0 0 40px rgba(0, 198, 255, 0.1); /* Subtle hover glow */
+}
+
+.settings-card h2 {
+  margin: 0 0 1rem;
+  font-size: 1.4rem;
+  color: #90d3ff;
+}
+.settings-card h3 {
+    margin-top: 1.5rem;
+    font-size: 1.2rem;
+    color: #00f5ff;
+}
+
+.field {
+  margin-bottom: 1.25rem;
+}
+
+.settings-card label {
+  font-size: 0.95rem;
+  margin-bottom: 0.4rem;
+  color: #b3e5fc;
+  font-weight: 500;
+}
+
+.settings-card input[type="text"],
+.settings-card input[type="time"] {
+  padding: 0.6rem 0.8rem;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #0f1a30; /* Very dark input background */
+  color: #fff;
+  font-size: 1rem;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.settings-card input[type="text"]:focus,
+.settings-card input[type="time"]:focus {
+  border-color: #00f5ff; /* Cyan focus glow */
+  box-shadow: 0 0 15px rgba(0, 245, 255, 0.5);
+  background: #152540;
+}
+
+.settings-card small {
+  font-size: 0.8rem;
+  opacity: 0.6;
+  display: block; /* Make sure small tag is on its own line */
+}
+
+/* --- STYLES FOR MULTIPLE MEDICATION FEATURE --- */
+.medication-list-container {
+    min-height: 50px;
+    padding: 10px;
+    border: 1px dashed rgba(0, 198, 255, 0.3);
+    border-radius: 10px;
+    margin-bottom: 15px;
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.empty-list-msg {
+    color: rgba(255, 255, 255, 0.5);
+    font-style: italic;
+    font-size: 0.9rem;
+    padding: 5px 0;
+}
+
+.medication-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 12px;
+    margin: 5px 0;
+    background: #1a2740;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    border-left: 4px solid #4ea1ff;
+}
+
+.remove-med-btn {
+    background: #ff5e00;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    font-size: 0.7rem;
+    line-height: 1;
+    transition: background 0.1s ease;
+}
+
+.remove-med-btn:hover {
+    background: #ff9900;
+}
+
+.medication-adder {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.med-input-field {
+    flex-grow: 1;
+    padding: 0.6rem 0.8rem;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: #0f1a30;
+    color: #fff;
+    font-size: 1rem;
+}
+
+.add-med-btn {
+    /* Smaller, distinct button style */
+    background: linear-gradient(45deg, #48ff99, #00d4ff);
+    color: #0c1018;
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+    border-radius: 10px;
+    box-shadow: none;
+    transition: background 0.1s;
+}
+
+.add-med-btn:hover {
+    background: linear-gradient(45deg, #00d4ff, #48ff99);
+}
+
+
+/* Controls */
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  max-width: 700px;
+  margin: 0 auto 2rem;
+}
+
+/* 4. Stunning Buttons */
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: 50px; /* Pill shape */
+  padding: 0.75rem 1.8rem;
+  font-size: 1rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.2s ease;
+  letter-spacing: 0.5px;
+}
+
+button:active {
+  transform: scale(0.96);
+}
+
+.primary-btn {
+  /* Dynamic blue-purple gradient for START button */
+  background: linear-gradient(90deg, #00c6ff, #5918e9);
+  color: #ffffff;
+  box-shadow: 0 8px 25px rgba(0, 198, 255, 0.4);
+}
+
+.primary-btn:hover {
+  background: linear-gradient(90deg, #5918e9, #00c6ff);
+  box-shadow: 0 10px 30px rgba(89, 24, 233, 0.6);
+  transform: translateY(-2px);
+}
+
+.secondary-btn {
+  /* Yellow/Orange gradient for LISTEN button and Voice Add button */
+  background: linear-gradient(90deg, #ff9900, #ff5e00);
+  color: #ffffff;
+  box-shadow: 0 8px 25px rgba(255, 153, 0, 0.4);
+}
+
+.secondary-btn:hover {
+  background: linear-gradient(90deg, #ff5e00, #ff9900);
+  box-shadow: 0 10px 30px rgba(255, 94, 0, 0.6);
+  transform: translateY(-2px);
+}
+
+/* Status Section */
+.status-section h3 {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  color: #00f5ff; /* Highlighted title */
+}
+
+#statusText {
+  font-size: 1rem;
+  padding: 0.5rem 0;
+  font-weight: 500;
+}
+
+/* Log Section */
+.log-section h3 {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  color: #00f5ff;
+}
+
+.log-box {
+  max-height: 200px; /* Slightly shorter for cleaner look */
+  padding: 1rem;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.2); /* Transparent dark background */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  overflow-y: auto;
+  font-size: 0.9rem;
+}
+
+/* 5. Log message types (Enhanced Colors) */
+.log-box div {
+    padding: 2px 0;
+}
+.log-box .ok {
+  color: #48ff99; /* Brighter success green */
+}
+
+.log-box .warn {
+  color: #ffda79; /* Brighter warning yellow */
+}
+
+.log-box .crit {
+  color: #ff5e7d; /* Brighter critical red */
+}
+
+.log-box .normal {
+  color: #e0e6ff;
+}
+
+/* Footer */
+.app-footer {
+  margin-top: 2rem;
+  text-align: center;
+  font-size: 0.8rem;
+  opacity: 0.5;
+}
+
+/* Scrollbar styling */
+.log-box::-webkit-scrollbar {
+  width: 8px;
+}
+
+.log-box::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #00c6ff, #5918e9);
+  border-radius: 999px;
+}
+.log-box::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+
+/* Responsive */
+@media (max-width: 600px) {
+  .app-container {
+    padding: 1rem;
+    margin: 1rem auto;
+  }
+
+  .settings-card, .status-section, .log-section {
+    padding: 1rem;
+    margin: 1rem auto;
+  }
+
+  .controls {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  button {
+    width: 100%;
+    justify-content: center;
+  }
+}

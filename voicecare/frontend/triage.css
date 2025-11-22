@@ -1,0 +1,250 @@
+/* triage.css - Stunning Dark Mode Dashboard, themed to voicecare.css (Glassmorphism) */
+
+:root {
+    /* voicecare.css Color Palette & Variables */
+    --bg-deep: #0f172a;
+    /* REDUCED TRANSPARENCY: 0.7 changed to 0.85 */
+    --glass-surface: rgba(30, 41, 59, 0.85); 
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --primary: #3b82f6;
+    --accent: #06b6d4;
+    --danger: #ef4444;
+    --warning: #f59e0b;
+    --success: #10b981;
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --radius: 16px;
+    --font-main: 'Inter', sans-serif; /* Poppins replaced with Inter */
+
+    /* Risk Colors mapping to voicecare */
+    --color-low: var(--success);
+    --color-medium: var(--warning);
+    --color-high: var(--danger);
+    --color-emergency: #b91c1c; /* Kept Deep Red for Emergency */
+
+    /* REDUCED TRANSPARENCY: 0.9 changed to 0.95 for headers */
+    --color-bg-header: rgba(15, 23, 42, 0.95); /* Opaque background for sticky header */
+    --color-table-header: rgba(30, 41, 59, 0.95);
+}
+
+* { box-sizing: border-box; outline: none; } /* Added from voicecare */
+
+body {
+    margin: 0;
+    font-family: var(--font-main);
+    /* Updated background to match voicecare's dark gradient */
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    color: var(--text-main);
+    line-height: 1.6;
+    min-height: 100vh; /* Added from voicecare */
+    position: relative; /* Added for orb positioning */
+}
+
+/* Background Animation from voicecare.css */
+.bg-orb {
+    position: fixed; border-radius: 50%; filter: blur(100px); z-index: -1; opacity: 0.4;
+    animation: float 20s infinite ease-in-out;
+}
+.orb-1 { width: 400px; height: 400px; background: var(--primary); top: -100px; left: -100px; }
+.orb-2 { width: 500px; height: 500px; background: var(--accent); bottom: -100px; right: -100px; animation-delay: -10s; }
+@keyframes float { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(30px, 50px); } }
+
+
+.container {
+    padding: 40px 20px; /* Increased padding */
+    max-width: 1400px; /* Wider than 900px, but less than 1600px */
+    margin: 0 auto;
+}
+
+/* Header Styling */
+header {
+    /* Glassmorphism style for the header, using the glass surface color */
+    background: var(--color-bg-header);
+    backdrop-filter: blur(10px);
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--glass-border);
+    position: sticky; /* Keep header sticky */
+    top: 0;
+    z-index: 20;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5rem; /* Increased size to match voicecare logo */
+    font-weight: 800; /* Increased weight to match voicecare logo */
+    /* Applied voicecare's gradient text effect */
+    background: linear-gradient(to right, var(--text-main), var(--accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 1px;
+}
+
+#voiceBtn {
+    padding: 14px 28px; /* Matched button padding */
+    /* Applied primary-btn styling */
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: white;
+    border: none;
+    border-radius: 12px; /* Matched button radius */
+    cursor: pointer;
+    font-size: 1rem; /* Matched button font size */
+    font-weight: 600;
+    transition: all 0.2s; /* Matched transition */
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4); /* Matched primary-btn shadow */
+}
+
+#voiceBtn:hover {
+    background: linear-gradient(135deg, var(--primary), var(--accent)); /* Consistent background on hover */
+    transform: translateY(-2px); /* Matched primary-btn hover effect */
+}
+
+/* Summary Grid and Cards */
+.summary-section h2 {
+    font-size: 1.5rem; /* Slightly larger */
+    color: var(--text-main);
+    margin: 25px 0 15px 0;
+    border-bottom: 1px solid var(--glass-border); /* Used glass border */
+    padding-bottom: 15px; /* Increased padding */
+    font-weight: 600;
+}
+
+#summaryGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px; /* Increased gap */
+    margin-bottom: 30px;
+}
+
+/* Glass Card Styling applied to .card */
+.card {
+    background: var(--glass-surface);
+    backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius); /* Matched voicecare radius */
+    padding: 24px; /* Matched voicecare padding */
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2); /* Matched voicecare shadow */
+    text-align: left;
+    color: var(--text-main);
+    transition: transform 0.2s ease, background-color 0.2s ease; /* Added background-color transition */
+}
+
+.card:hover {
+    transform: translateY(-3px); /* Increased hover lift */
+    /* Base background is overridden by specific classes below, but this is the general style */
+    background: var(--glass-surface);
+}
+
+.card h3 {
+    margin-top: 0;
+    font-size: 16px;
+    font-weight: 400;
+    opacity: 0.9;
+    color: var(--text-muted); /* Used muted text color */
+}
+
+.card p {
+    margin: 5px 0 0;
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--text-main); /* Ensure main text color */
+}
+
+/* Card Specific Colors (Border highlights for risk indication) */
+.card.low { border-left: 4px solid var(--color-low); }
+.card.medium { border-left: 4px solid var(--color-medium); }
+.card.high { border-left: 4px solid var(--color-high); }
+.card.emergency { border-left: 4px solid var(--color-emergency); }
+
+/* Ensure all cards start with the glass surface background */
+.card.low, .card.medium, .card.high, .card.emergency {
+    background: var(--glass-surface);
+}
+
+/* --- HOVER EFFECTS: Opacity increased from 0.15/0.2 to 0.35/0.4 --- */
+.card.low:hover { background: rgba(16, 185, 129, 0.35); } /* Light Green */
+.card.medium:hover { background: rgba(245, 158, 11, 0.35); } /* Light Amber/Orange */
+.card.high:hover { background: rgba(239, 68, 68, 0.35); } /* Light Red */
+.card.emergency:hover { background: rgba(185, 28, 28, 0.4); } /* Light Deep Red */
+/* --- END HOVER EFFECTS --- */
+
+/* Table Styling */
+.table-section h2 {
+    font-size: 1.5rem;
+    color: var(--text-main);
+    margin: 25px 0 15px 0;
+    border-bottom: 1px solid var(--glass-border);
+    padding-bottom: 15px;
+    font-weight: 600;
+}
+
+.table-scroll-wrapper {
+    max-height: 60vh;
+    overflow-y: auto;
+    border-radius: var(--radius); /* Matched radius */
+    /* Applied glass card styling to the wrapper */
+    background: var(--glass-surface);
+    backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+#triageTable {
+    width: 100%;
+    border-collapse: collapse;
+    background: transparent; /* Make table background transparent to show wrapper's glass effect */
+}
+
+#triageTable thead {
+    background-color: var(--color-table-header); /* Slightly darker, sticky glass header */
+    backdrop-filter: blur(10px);
+    color: var(--text-main);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid var(--glass-border); /* Used glass border */
+    font-size: 14px;
+}
+
+/* Alternating row colors for clarity - using very subtle dark background */
+#triageTable tbody tr:nth-child(even) {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+#triageTable tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.05); /* Subtle hover effect */
+    transition: background-color 0.15s ease;
+}
+
+.status {
+    /* Aligned with voicecare status badge style */
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-weight: 600;
+    color: white;
+    display: inline-block;
+}
+
+/* Status Colors for Table Cells - using the risk tag backgrounds from voicecare */
+.status.low { background: rgba(16, 185, 129, 0.15); color: #a7f3d0; }
+.status.medium { background: rgba(245, 158, 11, 0.15); color: #fde68a; }
+.status.high { background: rgba(239, 68, 68, 0.15); color: #fecaca; }
+.status.emergency { background: rgba(185, 28, 28, 0.2); color: #fca5a5; }
+
+/* Vitals Column Readability */
+td:last-child {
+    font-family: var(--font-main); /* Changed from monospace */
+    font-size: 12px;
+    color: var(--text-muted); /* Used muted text color */
+    word-break: break-all;
+}
