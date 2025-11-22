@@ -228,7 +228,7 @@ def emergency_rules(utter, e):
             if temp >= 103.5:
                 return "Emergency"
             if age < 5 and temp >= 100:
-                return "Emergency"
+                return "Medium"
             if age >= 5 and temp >= 102:
                 return "Emergency"
     except Exception:
